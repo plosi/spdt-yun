@@ -131,7 +131,6 @@ void do_sensor_logging(){
 
 /***** Request a reading from the given channel *****/
 void request_reading(int channel){
-//  request_pending = true;
   Wire.beginTransmission(channel_ids[channel]);
   Wire.write('r');
   Wire.endTransmission();
@@ -174,8 +173,6 @@ String receive_reading(int channel){
 
 /***** Set onboard time via browser clock *****/
 void setBoardTime(String browser_sec){
-//  String time = client.readStringUntil('.');  // read time from browser in seconds from Jan 1, 1970
-//  time.trim();
   Process setTime;
   String cmdTimeStrg = "date +%s -s @" + browser_sec; // linux command to set time
   setTime.runShellCommand(cmdTimeStrg);
